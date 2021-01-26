@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30709.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "scheduler.api", "scheduler.api\scheduler.api.csproj", "{094434FB-0AD1-4F3A-9059-94F451F3529D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{0DAB1356-3654-45CF-9E06-32B51EB63EA8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{C74A7B0D-5151-40A6-B9E3-E5AE7C5FC19D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "scheduler-auth.api", "scheduler-auth.api\scheduler-auth.api.csproj", "{AD560E8E-17B3-46BF-94DB-5703CA4D51E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "scheduler-user.api", "scheduler-user.api\scheduler-user.api.csproj", "{DBCE8699-F1B7-4549-AD44-6C19D5EBE773}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "scheduler-azure.api", "scheduler-azure.api\scheduler-azure.api.csproj", "{B0FB1328-8CB9-41C8-BF92-0589840FAB98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2390EF93-05D7-4436-B1D0-90A1C4B44EB9}"
+	ProjectSection(SolutionItems) = preProject
+		.filenesting.json = .filenesting.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scheduler-core.api", "scheduler-core.api\scheduler-core.api.csproj", "{D1519601-C9C7-439C-8863-CE1315DD448D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{094434FB-0AD1-4F3A-9059-94F451F3529D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{094434FB-0AD1-4F3A-9059-94F451F3529D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{094434FB-0AD1-4F3A-9059-94F451F3529D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{094434FB-0AD1-4F3A-9059-94F451F3529D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DAB1356-3654-45CF-9E06-32B51EB63EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DAB1356-3654-45CF-9E06-32B51EB63EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DAB1356-3654-45CF-9E06-32B51EB63EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DAB1356-3654-45CF-9E06-32B51EB63EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C74A7B0D-5151-40A6-B9E3-E5AE7C5FC19D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C74A7B0D-5151-40A6-B9E3-E5AE7C5FC19D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C74A7B0D-5151-40A6-B9E3-E5AE7C5FC19D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C74A7B0D-5151-40A6-B9E3-E5AE7C5FC19D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD560E8E-17B3-46BF-94DB-5703CA4D51E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD560E8E-17B3-46BF-94DB-5703CA4D51E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD560E8E-17B3-46BF-94DB-5703CA4D51E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD560E8E-17B3-46BF-94DB-5703CA4D51E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBCE8699-F1B7-4549-AD44-6C19D5EBE773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBCE8699-F1B7-4549-AD44-6C19D5EBE773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBCE8699-F1B7-4549-AD44-6C19D5EBE773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBCE8699-F1B7-4549-AD44-6C19D5EBE773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FB1328-8CB9-41C8-BF92-0589840FAB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FB1328-8CB9-41C8-BF92-0589840FAB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FB1328-8CB9-41C8-BF92-0589840FAB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FB1328-8CB9-41C8-BF92-0589840FAB98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1519601-C9C7-439C-8863-CE1315DD448D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1519601-C9C7-439C-8863-CE1315DD448D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1519601-C9C7-439C-8863-CE1315DD448D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1519601-C9C7-439C-8863-CE1315DD448D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {092615E9-09A1-49E8-8FF7-726D400ACAAA}
+	EndGlobalSection
+EndGlobal
