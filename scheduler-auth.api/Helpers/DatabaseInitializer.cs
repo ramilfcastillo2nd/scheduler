@@ -3,6 +3,7 @@ using Core.Interfaces.Accounts;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,14 @@ namespace scheduler_auth.api.Helpers
         private readonly CampaignSchedulerContext _context;
         private readonly IAccountService _accountService;
         private IHostingEnvironment _env;
+        private IConfiguration _config;
 
-        public DatabaseInitializer(CampaignSchedulerContext context, IAccountService accountService, IHostingEnvironment env)
+        public DatabaseInitializer(CampaignSchedulerContext context, IAccountService accountService, IHostingEnvironment env, IConfiguration config)
         {
             _accountService = accountService;
             _context = context;
             _env = env;
+            _config = config;
         }
 
         public async Task SeedData()
@@ -36,9 +39,15 @@ namespace scheduler_auth.api.Helpers
 
         private async Task InitNewRoles()
         {
-            const string adminRoleName = "admin";
+            string superAdmin = _config.GetSection("Roles:0").Value;
+            string admin = _config.GetSection("Roles:1").Value;
+            string sdr = _config.GetSection("Roles:2").Value;
+            string sdrm = _config.GetSection("Roles:3").Value;
 
-            await EnsureRoleAsync(adminRoleName, "Admin", new string[] { });
+            await EnsureRoleAsync(superAdmin, "Super Admin", new string[] { });
+            await EnsureRoleAsync(admin, "Admin", new string[] { });
+            await EnsureRoleAsync(sdr, "Sdr", new string[] { });
+            await EnsureRoleAsync(sdrm, "Sdr Manager", new string[] { });
 
             //Create Super Admin User
             var userExists = await _accountService.CheckUserExists("bryce@outreachlever.io");
@@ -52,7 +61,7 @@ namespace scheduler_auth.api.Helpers
                 else
                     password = "hTfpwbs!D7p6eZbjNUk!";
 
-                await CreateUserAsync("bryce@outreachlever.io", password, "Default", "Admin", "bryce@outreachlever.io", "", new string[] { adminRoleName });
+                await CreateUserAsync("bryce@outreachlever.io", password, "Default", "Admin", "bryce@outreachlever.io", "", new string[] { superAdmin });
             }
 
             //Create Super Admin User
@@ -67,7 +76,7 @@ namespace scheduler_auth.api.Helpers
                 else
                     password = "hTfpwbs!D7p6eZbjNUk!";
 
-                await CreateUserAsync("philip@growthlever.io", password, "Default", "Admin", "philip@growthlever.io", "", new string[] { adminRoleName });
+                await CreateUserAsync("philip@growthlever.io", password, "Default", "Admin", "philip@growthlever.io", "", new string[] { superAdmin });
             }
 
             //Create Super Admin User
@@ -82,7 +91,7 @@ namespace scheduler_auth.api.Helpers
                 else
                     password = "hTfpwbs!D7p6eZbjNUk!";
 
-                await CreateUserAsync("hazelle@growthlever.io", password, "Default", "Admin", "hazelle@growthlever.io", "", new string[] { adminRoleName });
+                await CreateUserAsync("hazelle@growthlever.io", password, "Default", "Admin", "hazelle@growthlever.io", "", new string[] { superAdmin });
             }
 
         }
