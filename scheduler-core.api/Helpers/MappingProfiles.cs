@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Dtos.CampaignPricings.Input;
 using Core.Dtos.CampaignPricings.Output;
 using Core.Dtos.Campaigns.Input;
 using Core.Dtos.Campaigns.Output;
@@ -29,6 +30,8 @@ namespace scheduler_core.api.Helpers
 
             CreateMap<Content, GetContentOutputDto>();
             CreateMap<CampaignPricing, GetCampaignPricingOutputDto>();
+
+            CreateMap<CreateCampaignPricingInputDto, CampaignPricing>();
         }
     }
 }
