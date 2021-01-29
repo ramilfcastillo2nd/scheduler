@@ -77,7 +77,7 @@ namespace scheduler_core.api.Controllers
             }
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "superadmin, admin")]
         [HttpPost]
         public async Task<IActionResult> CreateCampaign([FromBody] CreateCampaignInputDto request)
         {

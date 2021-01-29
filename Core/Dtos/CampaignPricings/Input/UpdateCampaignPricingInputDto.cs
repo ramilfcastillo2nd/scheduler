@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Core.Dtos.CampaignPricings.Input
+﻿namespace Core.Dtos.CampaignPricings.Input
 {
     public class UpdateCampaignPricingInputDto
     {

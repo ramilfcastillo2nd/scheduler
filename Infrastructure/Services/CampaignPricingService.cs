@@ -3,9 +3,7 @@ using Core.Dtos.Validation.Output;
 using Core.Entities;
 using Core.Interfaces;
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Services
@@ -13,7 +11,6 @@ namespace Infrastructure.Services
     public class CampaignPricingService: ICampaignPricingService
     {
         private readonly IUnitOfWork _unitOfWork;
-
         public CampaignPricingService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;

@@ -1,9 +1,11 @@
 ﻿using Core.Dtos.Payrolls;
+using Core.Dtos.Payrolls.Input;
 using Core.Entities;
 using Core.Enums;
 using Core.Interfaces;
 using Core.Specifications;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +17,16 @@ namespace Infrastructure.Services
         public PayrollService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+        }
+
+        public async Task<IReadOnlyList<Payroll>> GetPayrollByUserProfileId(Guid userId)
+        {
+            var userProfileSpecs = new GetUserProfileByUserIdSpecification(userId);
+            var userProfile = _unitOfWork.Repository<UserProfile>().GetEntityWithSpec(userProfileSpecs);
+
+            var specs = new GetPayrollByUserProfileIdSpecification(userProfile.Id);
+            var payroll = await _unitOfWork.Repository<Payroll>().ListAsync(specs);
+            return payroll;
         }
 
         public async Task ProcessPayrollPeriod(ProcessPayrollInputDto request, Guid userId)

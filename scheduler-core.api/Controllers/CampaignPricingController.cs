@@ -1,15 +1,15 @@
 ﻿using Core.Dtos.CampaignPricings.Output;
-using Core.Dtos.CampaignPricings.Input;
 using Core.Interfaces;
 using Core.Entities.Identity;
 using Core.Entities;
+using Core.Dtos.CampaignPricings.Input;
 using scheduler_core.api.Errors;
 using scheduler_core.api.Extensions;
 
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
@@ -95,6 +95,8 @@ namespace scheduler_core.api.Controllers
         {
             try
             {
+                var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+
                 var campaignPrice = await _campaignPricingService.GetCampaignPricingById(request.Id);
                 if (campaignPrice == null)
                     return BadRequest(new ApiResponse(400, "Campaign Price is not existing."));
@@ -107,6 +109,8 @@ namespace scheduler_core.api.Controllers
                 campaignPrice.Name = request.Name;
                 campaignPrice.Pricing = request.Pricing;
                 campaignPrice.DuarationId = request.DuarationId;
+                campaignPrice.UpdatedBy = user.Id.ToString();
+                campaignPrice.UpdatedDate = DateTime.UtcNow;
 
                 await _campaignPricingService.UpdateCampaignPrice(campaignPrice);
                 return Ok(new ApiResponse(200, "Success"));

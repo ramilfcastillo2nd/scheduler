@@ -9,6 +9,7 @@ namespace Core.Entities
     public class Campaign: BaseEntity
     {
         public string CampaignName { get; set; }
+        public int CampaignType { get; set; }
         public string Plan { get; set; }
         public string Client { get; set; }
         public string ClientEmail { get; set; } 

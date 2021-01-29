@@ -86,6 +86,16 @@ namespace Infrastructure.Services
                     StatusCode = 400
                 };
 
+            //Check if campaign type is valid
+            var campaignTypeExists = Enum.IsDefined(typeof(CampaignType), request.CampaignType);
+            if (!campaignTypeExists)
+                return new ValidationOutputDto
+                {
+                    IsSuccess = false,
+                    Message = "CampaignType is not valid.",
+                    StatusCode = 400
+                };
+
             if (string.IsNullOrEmpty(request.Plan))
                 return new ValidationOutputDto
                 {

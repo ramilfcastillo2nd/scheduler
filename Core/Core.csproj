@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\CampaignPricings\Input\" />
     <Folder Include="Dtos\SdrGroupings\Output\" />
   </ItemGroup>
 

@@ -1,12 +1,16 @@
-﻿using Core.Dtos.Payrolls;
+﻿using AutoMapper;
+using Core.Dtos.Payrolls;
 using Core.Dtos.Payrolls.Input;
+using Core.Dtos.Payrolls.Output;
 using Core.Entities.Identity;
 using Core.Interfaces;
+using Core.Specifications;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using scheduler_core.api.Errors;
 using scheduler_core.api.Extensions;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace scheduler_core.api.Controllers
@@ -15,10 +19,12 @@ namespace scheduler_core.api.Controllers
     {
         private readonly IPayrollService _payrollService;
         private readonly UserManager<AppUser> _userManager;
-        public PayrollController(UserManager<AppUser> userManager, IPayrollService payrollService)
+        private readonly IMapper _mapper;
+        public PayrollController(IMapper mapper, UserManager<AppUser> userManager, IPayrollService payrollService)
         {
             _payrollService = payrollService;
             _userManager = userManager;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = "admin")]
@@ -37,11 +43,15 @@ namespace scheduler_core.api.Controllers
             }
         }
 
-        public async Task<IActionResult> GetPayrollByEmployeeId(int employeeId)
+        [HttpGet("currentsdr")]
+        public async Task<IActionResult> GetPayrollByEmployeeId()
         {
             try
             {
-                return Ok();
+                var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+                var payroll = await _payrollService.GetPayrollByUserProfileId(user.Id);
+                var payrollMapped = _mapper.Map<IReadOnlyList<GetPayrollOutputDto>>(payroll);
+                return Ok(payrollMapped);
             }
             catch
             {
