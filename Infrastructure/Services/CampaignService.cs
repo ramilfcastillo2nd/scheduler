@@ -87,7 +87,7 @@ namespace Infrastructure.Services
                 };
 
             //Check if campaign type is valid
-            var campaignTypeExists = Enum.IsDefined(typeof(CampaignType), request.CampaignType);
+            var campaignTypeExists = Enum.IsDefined(typeof(CampaignType), request.CampaignTypeId);
             if (!campaignTypeExists)
                 return new ValidationOutputDto
                 {
@@ -167,6 +167,16 @@ namespace Infrastructure.Services
                 {
                     IsSuccess = false,
                     Message = "Campaign Name is a required field.",
+                    StatusCode = 400
+                };
+
+            //Check if campaign type is valid
+            var campaignTypeExists = Enum.IsDefined(typeof(CampaignType), request.CampaignTypeId);
+            if (!campaignTypeExists)
+                return new ValidationOutputDto
+                {
+                    IsSuccess = false,
+                    Message = "CampaignType is not valid.",
                     StatusCode = 400
                 };
 

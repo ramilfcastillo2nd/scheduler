@@ -17,6 +17,7 @@ namespace Core.Entities
         public string Country { get; set; }
         public decimal? Wage { get; set; }
         public int? StatusId { get;set; }
+        public int? SdrTypeId { get; set; }
         public int? DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
         public Department Department { get; set; }

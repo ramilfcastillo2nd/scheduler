@@ -9,6 +9,7 @@
         public string ImageUrl { get; set; }
         public int? StatusId { get; set; } 
         public int? DepartmentId { get; set; }
+        public int? SdrTypeId { get; set; }
         public int RoleId { get; set; }
     }
 }

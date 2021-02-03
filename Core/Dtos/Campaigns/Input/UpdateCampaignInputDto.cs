@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.Dtos.Campaigns.Input
 {
@@ -15,5 +13,6 @@ namespace Core.Dtos.Campaigns.Input
         public int? TrelloEditorId { get; set; }
         public DateTime? Started { get; set; }
         public int? StatusId { get; set; } = 1;
+        public int? CampaignTypeId { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace Core.Dtos.Campaigns.Output
         public string ClientEmail { get; set; }
         public int? AccountsExecutiveId { get; set; }
         public int? TrelloEditorId { get; set; }
+        public int? CampaignTypeId { get; set; }
         public DateTime? Started { get; set; }
         public ContentOutputDto Content { get; set; }
     }

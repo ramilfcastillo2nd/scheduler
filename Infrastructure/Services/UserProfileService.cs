@@ -79,6 +79,17 @@ namespace Infrastructure.Services
                     StatusCode = 400
                 };
 
+
+            //Check if Sdr type is valid
+            var sdrTypeExists = Enum.IsDefined(typeof(SdrType), request.SdrTypeId);
+            if (!sdrTypeExists)
+                return new ValidationOutputDto
+                {
+                    IsSuccess = false,
+                    Message = "SdrType is not valid.",
+                    StatusCode = 400
+                };
+
             if (request.DepartmentId.HasValue)
             {
                 //Is Valid DepartmentId
