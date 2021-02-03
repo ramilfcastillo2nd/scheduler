@@ -91,5 +91,31 @@ namespace scheduler_core.api.Controllers
                 return BadRequest(new ApiResponse(400, "Something went wrong."));
             }
         }
+
+        [Authorize(Roles = "superadmin, admin")]
+        [HttpPut]
+        public async Task<ActionResult<GetWageOutputDto>> UpdateWageAsync([FromBody] UpdateWageInputDto request)
+        {
+            try
+            {
+                var wage = await _wageService.GetWageInfoByIdAsync(request.Id);
+                if (wage == null) return BadRequest(new ApiResponse(400, "Wage info not existing."));
+
+                var validationResponse = await _wageService.ValidateUpdateInput(request);
+                if (!validationResponse.IsSuccess) return BadRequest(new ApiResponse(validationResponse.StatusCode, validationResponse.Message));
+
+                wage.SdrType = request.SdrType;
+                wage.CampaignType = request.CampaignType;
+                wage.BasePay = request.BasePay;
+                wage.IncentivePay = request.IncentivePay;
+
+                await _wageService.UpdateWage(wage);
+                return Ok(new ApiResponse(200, "Success"));
+            }
+            catch
+            {
+                return BadRequest(new ApiResponse(400, "Something went wrong."));
+            }
+        }
     }
 }

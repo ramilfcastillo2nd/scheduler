@@ -83,5 +83,39 @@ namespace Infrastructure.Services
                 StatusCode = 200
             };
         }
+
+        public async Task<ValidationOutputDto> ValidateUpdateInput(UpdateWageInputDto request)
+        {
+            if (string.IsNullOrEmpty(request.SdrType))
+                return new ValidationOutputDto
+                {
+                    IsSuccess = false,
+                    Message = "Sdr Type is a required field.",
+                    StatusCode = 400
+                };
+
+            if (string.IsNullOrEmpty(request.CampaignType))
+                return new ValidationOutputDto
+                {
+                    IsSuccess = false,
+                    Message = "Campaign type is a required field.",
+                    StatusCode = 400
+                };
+
+            if (request.BasePay == 0)
+                return new ValidationOutputDto
+                {
+                    IsSuccess = false,
+                    Message = "Base pay must be greater than 0.",
+                    StatusCode = 400
+                };
+
+            return new ValidationOutputDto
+            {
+                IsSuccess = true,
+                Message = string.Empty,
+                StatusCode = 200
+            };
+        }
     }
 }
