@@ -2,7 +2,7 @@
 {
     public enum CampaignType
     {
-        GrowthLever = 1,
-        Client = 2
+        GrowthLever = 0,
+        Client = 1
     }
 }
