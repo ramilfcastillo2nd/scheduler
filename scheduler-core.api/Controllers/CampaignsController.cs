@@ -211,6 +211,7 @@ namespace scheduler_core.api.Controllers
 
                 campaign.CampaignName = request.CampaignName;
                 campaign.Client = request.Client;
+                campaign.CampaignTypeId = request.CampaignTypeId;
                 campaign.Plan = request.Plan;
                 campaign.Started = request.Started;
                 campaign.StatusId = request.StatusId;

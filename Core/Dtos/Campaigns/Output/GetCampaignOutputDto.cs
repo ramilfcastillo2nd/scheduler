@@ -12,5 +12,6 @@ namespace Core.Dtos.Campaigns.Output
         public DateTime? Started { get; set; }
         public int? StatusId { get; set; }
         public int? ManagerId { get; set; }
+        public int? CampaignTypeId { get; set; }
     }
 }

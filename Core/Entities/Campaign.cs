@@ -9,7 +9,6 @@ namespace Core.Entities
     public class Campaign: BaseEntity
     {
         public string CampaignName { get; set; }
-        public int CampaignType { get; set; }
         public string Plan { get; set; }
         public string Client { get; set; }
         public string ClientEmail { get; set; } 
@@ -21,6 +20,7 @@ namespace Core.Entities
         public UserProfile TrelloEditor { get; set; }
         public DateTime? Started { get; set; }
         public int? StatusId { get; set; }
+        public int? CampaignTypeId { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public int? UserProfileId { get; set; }
