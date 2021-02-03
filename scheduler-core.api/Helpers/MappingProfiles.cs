@@ -7,6 +7,8 @@ using Core.Dtos.Departments.Input;
 using Core.Dtos.Departments.Output;
 using Core.Dtos.Payrolls.Output;
 using Core.Dtos.UserProfiles.Output;
+using Core.Dtos.Wages.Input;
+using Core.Dtos.Wages.Output;
 using Core.Entities;
 
 using AutoMapper;
@@ -34,6 +36,9 @@ namespace scheduler_core.api.Helpers
             CreateMap<CampaignPricing, GetCampaignPricingOutputDto>();
             CreateMap<CreateCampaignPricingInputDto, CampaignPricing>();
             CreateMap<Payroll, GetPayrollOutputDto>();
+
+            CreateMap<AddWageInputDto, Wage>();
+            CreateMap<Wage, GetWageOutputDto>();
         }
     }
 }

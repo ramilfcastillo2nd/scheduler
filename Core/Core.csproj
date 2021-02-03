@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <Folder Include="Dtos\SdrGroupings\Output\" />
+    <Folder Include="Dtos\Wages\Output\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

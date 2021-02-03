@@ -24,6 +24,7 @@ namespace Infrastructure.Data
         public virtual DbSet<Attendance> Attendances { get; set; }
         public virtual DbSet<Payroll> Payrolls { get; set; }
         public virtual DbSet<CampaignPricing> CampaignPricings { get; set; }
+        public virtual DbSet<Wage> Wages { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
