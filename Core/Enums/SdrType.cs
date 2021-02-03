@@ -4,6 +4,6 @@
     {
         Senior = 0,
         Associate = 1,
-        Sdr = 3
+        Sdr = 2
     }
 }
