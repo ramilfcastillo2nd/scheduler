@@ -22,6 +22,7 @@ namespace scheduler_core.api.Extensions
             services.AddScoped<IUserProfileService, UserProfileService>();
             services.AddScoped<ICampaignService, CampaignService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IWageService, WageService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
 
