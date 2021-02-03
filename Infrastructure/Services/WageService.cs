@@ -3,6 +3,7 @@ using Core.Dtos.Wages.Input;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using System.Collections.Generic;
 
 using System.Threading.Tasks;
 
@@ -33,6 +34,12 @@ namespace Infrastructure.Services
         {
             var department = await _unitOfWork.Repository<Wage>().GetByIdAsync(id);
             return department;
+        }
+
+        public async Task<IReadOnlyList<Wage>> GetWagesAsync(CommonSpecParams specParams)
+        {
+            var specs = new GetWagesSpecification(specParams);
+            return await _unitOfWork.Repository<Wage>().ListAsync(specs);
         }
 
         public async Task UpdateWage(Wage request)

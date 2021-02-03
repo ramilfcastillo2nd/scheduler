@@ -2,11 +2,15 @@
 using Core.Entities.Identity;
 using Core.Entities;
 using Core.Dtos.Wages.Input;
+using Core.Dtos.Wages.Output;
+using Core.Specifications;
+using scheduler_core.api.Helpers;
 using scheduler_core.api.Extensions;
 using scheduler_core.api.Errors;
 
 using AutoMapper;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
@@ -43,6 +47,23 @@ namespace scheduler_core.api.Controllers
                 var wageMapped = _mapper.Map<Wage>(request);
                 await _wageService.CreateWage(wageMapped);
                 return Ok(new ApiResponse(200, "Success"));
+            }
+            catch
+            {
+                return BadRequest(new ApiResponse(400, "Something went wrong."));
+            }
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<Pagination<GetWageOutputDto>>> GetAllWages([FromQuery] CommonSpecParams specParams)
+        {
+            try
+            {
+                var wages = await _wageService.GetWagesAsync(specParams);
+                var departmentsMapped = _mapper.Map<IReadOnlyList<GetWageOutputDto>>(wages);
+
+                return Ok(new Pagination<GetWageOutputDto>(specParams.PageIndex, specParams.PageSize, 0, departmentsMapped));
             }
             catch
             {
