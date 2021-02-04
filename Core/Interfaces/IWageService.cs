@@ -16,7 +16,7 @@ namespace Core.Interfaces
         Task DeleteWage(Wage wage);
         Task<Wage> GetWageInfoByIdAsync(int id);
         Task<ValidationOutputDto> ValidateCreateInputAsync(AddWageInputDto request);
-        //Task<ValidationOutputDto> ValidateUpdateInput(UpdateCampaignInputDto request);
+        Task<ValidationOutputDto> ValidateUpdateInput(UpdateWageInputDto request);
         //Task<ValidationOutputDto> ValidateChangeStatusInput(ChangeCampaignStatusInputDto request);
     }
 }

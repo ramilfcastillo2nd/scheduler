@@ -5,6 +5,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>scheduler_core.api</RootNamespace>
+    <UserSecretsId>ddd244b9-7875-44d0-84bb-825575416bf5</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Controllers\CampaignsController.cs~RF383b40a1.TMP" />
